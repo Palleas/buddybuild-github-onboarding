@@ -54,4 +54,4 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
     res.send('hello, ' + req.user);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
