@@ -6,6 +6,7 @@
     "author": "Romain Pouclet",
     "license": "MIT",
     "dependencies": {
+        "buddybuild-client": "^0.0.4",
         "express": "^4.15.3",
         "express-session": "^1.15.3",
         "lodash": "^4.17.4",

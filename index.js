@@ -6,6 +6,7 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const _ = require('lodash');
 const session = require('express-session')
+const Buddybuild = require('buddybuild-client');
 
 require('dotenv').config();
 
@@ -23,7 +24,15 @@ passport.use(new GitHubStrategy({
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.GITHUB_REDIRECT_URL
 }, (accessToken, refreshToken, profile, done) => {
-    return done(null, _.get(profile, ['emails', '0', 'value']));
+    const email = _.get(profile, ['emails', '0', 'value']);
+    Buddybuild.client(process.env.BUDDYBUILD_API_KEY)
+    .addTesters(process.env.BUDDYBUILD_APP_ID, process.env.BUDDYBUILD_DEPLOYMENT_ID, [email])
+    .then(() => {
+        return done(null, _.get(profile, ['emails', '0', 'value']));
+    })
+    .catch(err => {
+        return done(err, null);
+    });
 }));
 
 passport.serializeUser((user, done) => {
@@ -41,8 +50,6 @@ app.get('/', (req, res) => {
 app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
 
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/error' }), (req, res) => {
-    // Successful authentication, redirect home.
-    // res.redirect('/');
     console.log(req.user);
     res.send('hello, ' + req.user);
 });
