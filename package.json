@@ -4,5 +4,8 @@
   "description": "Add buddybuild users in your buddybuild deployment groups.",
   "main": "index.js",
   "author": "Romain Pouclet",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }
