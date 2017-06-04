@@ -1,0 +1,8 @@
+{
+  "name": "buddybuild-github-onboarding",
+  "version": "0.0.1",
+  "description": "Add buddybuild users in your buddybuild deployment groups.",
+  "main": "index.js",
+  "author": "Romain Pouclet",
+  "license": "MIT"
+}
