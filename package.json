@@ -1,11 +1,16 @@
 {
-  "name": "buddybuild-github-onboarding",
-  "version": "0.0.1",
-  "description": "Add buddybuild users in your buddybuild deployment groups.",
-  "main": "index.js",
-  "author": "Romain Pouclet",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.15.3"
-  }
+    "name": "buddybuild-github-onboarding",
+    "version": "0.0.1",
+    "description": "Add buddybuild users in your buddybuild deployment groups.",
+    "main": "index.js",
+    "author": "Romain Pouclet",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.15.3",
+        "passport": "^0.3.2",
+        "passport-github2": "^0.1.10"
+    },
+    "devDependencies": {
+        "dotenv": "^4.0.0"
+    }
 }
